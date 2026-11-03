@@ -22,3 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Backend uploads
+backend/uploads/
+
+# Dependencies and build files
+node_modules/
+backend/node_modules/
+dist/
