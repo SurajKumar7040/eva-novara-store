@@ -1,10 +1,8 @@
 {
   "nodeVersion": "22.11.0",
   "cloudFunctions": {
-    "nodejs": {
-      "includeFiles": [
-        "backend/certs/ca.pem"
-      ]
-    }
+    "includeFiles": [
+      "backend/certs/ca.pem"
+    ]
   }
 }
