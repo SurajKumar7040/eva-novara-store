@@ -5,7 +5,7 @@ const path = require("path");
 
 dotenv.config();
 
-const caPath = path.join(__dirname, "../certs/ca.pem");
+const caPath = path.resolve(process.cwd(), "backend/certs/ca.pem");
 
 const db = mysql.createPool({
     host: process.env.DB_HOST,
