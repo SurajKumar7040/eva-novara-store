@@ -35,3 +35,24 @@ backend/uploads/
 node_modules/
 backend/node_modules/
 dist/
+
+# Database SSL certificates
+backend/certs/
+
+# Local database backups
+*.sql
+*.sql.gz
+
+# Project backup files
+*.backup.*
+*.js.backup
+*.jsx.backup
+*.css.backup
+
+# Local uploads and temporary images
+image_*/
+
+# Allow only the public Aiven CA certificate
+!backend/certs/
+backend/certs/*
+!backend/certs/ca.pem

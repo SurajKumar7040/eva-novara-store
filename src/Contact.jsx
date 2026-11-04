@@ -106,7 +106,7 @@ function Contact() {
             <span>📞</span>
             <div>
               <h3>Phone</h3>
-              <p>+91 98765 43210</p>
+              <p>+91 6391366017</p>
             </div>
           </div>
 
