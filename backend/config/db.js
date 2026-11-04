@@ -5,9 +5,25 @@ const path = require("path");
 
 dotenv.config();
 
-const caPath = process.env.DB_SSL_CA_PATH
-    ? path.resolve(process.env.DB_SSL_CA_PATH)
-    : path.join(__dirname, "../certs/ca.pem");
+const possibleCaPaths = [
+    process.env.DB_SSL_CA_PATH,
+    path.join(__dirname, "../certs/ca.pem"),
+    path.resolve(process.cwd(), "cloud-functions/api/ca.pem"),
+    path.join(__dirname, "../../cloud-functions/api/ca.pem"),
+    "/var/certs/ca.pem"
+].filter(Boolean);
+
+const caPath = possibleCaPaths.find(
+    (filePath) => fs.existsSync(filePath)
+);
+
+if (!caPath) {
+    throw new Error(
+        `Aiven CA certificate not found. Checked: ${possibleCaPaths.join(", ")}`
+    );
+}
+
+console.log("Aiven CA certificate loaded from:", caPath);
 
 const db = mysql.createPool({
     host: process.env.DB_HOST,
